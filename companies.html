@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Companies - Job Cloud</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-color: #fff6e5;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+    }
+    .companies-section {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .companies-section h2 {
+      font-size: 36px;
+      color: #1d624e;
+      margin-bottom: 30px;
+    }
+    .companies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .company-card {
+      background: #fff;
+      border-radius: 12px;
+      width: 280px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      text-align: center;
+    }
+    .company-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .company-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      background-color: #f9f9f9;
+      padding: 10px;
+    }
+    .company-content {
+      padding: 15px 20px;
+    }
+    .company-content h3 {
+      font-size: 20px;
+      color: #1d624e;
+      margin-bottom: 8px;
+    }
+    .company-content p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+      height: 60px;
+    }
+    .company-content .location {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    .company-content a {
+      display: inline-block;
+      padding: 8px 18px;
+      background-color: #1d624e;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .company-content a:hover {
+      background-color: #134436;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="jobcloud12.png" alt="Job Cloud Logo" />
+      <text>Job Cloud</text>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="companies.html" class="active">Companies</a>
+      <a href="learning.html">Learning</a>
+    </div>
+
+    <div class="profile dropdown">
+      <i class="fa-solid fa-user" style="color: #1d624e"></i>
+      <span class="profile-text">Kartik</span>
+      <div class="dropdown-content">
+        <a href="profile.html">View Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="#" id="logout">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="companies-section">
+    <h2>Top Hiring Companies</h2>
+
+    <div class="companies-grid">
+
+      <!-- IT Companies -->
+      <div class="company-card">
+        <img src="tcslogo.png" alt="TCS Logo" />
+        <div class="company-content">
+          <h3>TCS</h3>
+          <p>A global IT leader offering services in software, analytics, and consulting.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Bengaluru / Hyderabad / Mumbai</div>
+          <a href="information-technology.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" />
+        <div class="company-content">
+          <h3>Microsoft</h3>
+          <p>Global technology company shaping innovation in cloud computing and AI.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Hyderabad</div>
+          <a href="information-technology.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" />
+        <div class="company-content">
+          <h3>Google</h3>
+          <p>Empowering the world with search, AI, and cutting-edge cloud technology.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Gurugram</div>
+          <a href="information-technology.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" />
+        <div class="company-content">
+          <h3>Amazon</h3>
+          <p>Global e-commerce and cloud giant redefining logistics and AWS solutions.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Bengaluru</div>
+          <a href="information-technology.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.Kq54QSbhathL_7-5mQALtAHaEK?pid=Api&P=0&h=180" alt="Oracle Logo" />
+        <div class="company-content">
+          <h3>Oracle</h3>
+          <p>Database and enterprise software leader powering businesses worldwide.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Mumbai</div>
+          <a href="information-technology.html">View Jobs</a>
+        </div>
+      </div>
+
+      <!-- Engineering -->
+      <div class="company-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.wTTJzPfZUK8967z_Ul0rzgHaBq?pid=Api&P=0&h=180" alt="Honeywell Logo" />
+        <div class="company-content">
+          <h3>Honeywell</h3>
+          <p>Engineering innovation in automation, aerospace, and smart technology.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Bengaluru</div>
+          <a href="engineering.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.-szSb6FYheUXCJ9JiLAt6wHaFh?pid=Api&P=0&h=180" alt="L&T Logo" />
+        <div class="company-content">
+          <h3>Larsen & Toubro (L&T)</h3>
+          <p>Infrastructure and engineering giant driving India’s construction growth.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Mumbai</div>
+          <a href="engineering.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.2_L1xUgdf-vc5YlkZJ2uBAHaEK?pid=Api&P=0&h=180" alt="Siemens Logo" />
+        <div class="company-content">
+          <h3>Siemens</h3>
+          <p>Global powerhouse in electrical engineering, automation, and innovation.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Pune</div>
+          <a href="engineering.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.p2iwOwojwO0jjhM03aM3qgHaDz?pid=Api&P=0&h=180" alt="Bosch Logo" />
+        <div class="company-content">
+          <h3>Bosch</h3>
+          <p>Driving innovation in robotics, IoT, and industrial automation systems.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Hyderabad</div>
+          <a href="engineering.html">View Jobs</a>
+        </div>
+      </div>
+
+      <!-- Finance -->
+      <div class="company-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.20UZG_OJdxb6vdhuboZ1vgHaEK?pid=Api&P=0&h=180" alt="Goldman Sachs Logo" />
+        <div class="company-content">
+          <h3>Goldman Sachs</h3>
+          <p>Global investment bank offering financial, investment, and advisory services.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Mumbai</div>
+          <a href="finance.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.6WwKJytohpaCYYmCIiG2-QHaFj?pid=Api&P=0&h=180" alt="Morgan Stanley Logo" />
+        <div class="company-content">
+          <h3>Morgan Stanley</h3>
+          <p>World-leading financial services firm specializing in investment banking.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Bengaluru</div>
+          <a href="finance.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.ZFVZamQcmRxoIs20Nf1uJwHaHa?pid=Api&P=0&h=180" alt="J.P. Morgan Logo" />
+        <div class="company-content">
+          <h3>J.P. Morgan</h3>
+          <p>Trusted name in banking, risk management, and financial analytics.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Hyderabad</div>
+          <a href="finance.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.iJ-B6muTB2lCU3MdeBbxQgHaEK?pid=Api&P=0&h=180" alt="Bank of America Logo" />
+        <div class="company-content">
+          <h3>Bank of America</h3>
+          <p>Global financial institution supporting clients with banking solutions.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Gurugram</div>
+          <a href="finance.html">View Jobs</a>
+        </div>
+      </div>
+
+      <!-- Accounting -->
+      <div class="company-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.I8oa8fJhLHp2SAzMNTD_1wHaBY?pid=Api&P=0&h=180" alt="Deloitte Logo" />
+        <div class="company-content">
+          <h3>Deloitte</h3>
+          <p>Leading audit and consulting firm offering tax, finance, and advisory services.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Mumbai</div>
+          <a href="accounting.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.si9r1bNZBwIJmkwZ8kF5LgHaCK?pid=Api&P=0&h=180" alt="KPMG Logo" />
+        <div class="company-content">
+          <h3>KPMG</h3>
+          <p>Big Four accounting firm delivering audit, tax, and advisory services globally.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Gurugram</div>
+          <a href="accounting.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.WSBI5QzEx4eW-wVsykii1gHaFn?pid=Api&P=0&h=180" alt="PWC Logo" />
+        <div class="company-content">
+          <h3>PwC</h3>
+          <p>Providing world-class audit, tax, and consulting solutions to global clients.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Bengaluru</div>
+          <a href="accounting.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="company-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.pwJPOfXCvvLADF0W-dr6swHaHa?pid=Api&P=0&h=180" alt="EY Logo" />
+        <div class="company-content">
+          <h3>EY</h3>
+          <p>Global accounting and finance leader providing assurance and consulting services.</p>
+          <div class="location"><i class="fa-solid fa-location-dot"></i> Pune</div>
+          <a href="accounting.html">View Jobs</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Job Cloud. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-contact">
+        <p>Contact us: <a href="mailto:contact@jobcloud.com">contact@jobcloud.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector(".profile-text").addEventListener("click", function() {
+      document.querySelector(".profile.dropdown").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>

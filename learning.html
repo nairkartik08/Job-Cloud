@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub - Job Cloud</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      background-color: #fff6e5;
+      font-family: 'Poppins', sans-serif;
+    }
+    .learning-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .learning-section h2 {
+      color: #1d624e;
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+    .learning-section p {
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .learning-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .course-card {
+      background: white;
+      width: 270px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .course-card:hover {
+      transform: translateY(-8px);
+    }
+    .course-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .course-content {
+      padding: 15px;
+    }
+    .course-content h3 {
+      color: #1d624e;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .course-content p {
+      font-size: 14px;
+      color: #555;
+      min-height: 45px;
+    }
+    .course-content a {
+      display: inline-block;
+      background: #1d624e;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 8px;
+      margin-top: 12px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .course-content a:hover {
+      background-color: #134436;
+    }
+
+    .resources {
+      margin-top: 60px;
+      padding: 30px;
+      background-color: #e7f5f0;
+      border-radius: 10px;
+    }
+    .resources h3 {
+      color: #1d624e;
+      margin-bottom: 15px;
+    }
+    .resources ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .resources ul li {
+      padding: 10px 0;
+      font-size: 15px;
+    }
+    .resources ul li a {
+      color: #1d624e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .resources ul li a:hover {
+      color: #134436;
+      text-decoration: underline;
+    }
+
+    iframe {
+      border-radius: 10px;
+      width: 90%;
+      height: 300px;
+      margin: 30px auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="jobcloud12.png" alt="Job Cloud Logo" />
+      <text>Job Cloud</text>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="learning.html" class="active">Learning</a>
+    </div>
+
+    <div class="profile dropdown">
+      <i class="fa-solid fa-user" style="color: #1d624e"></i>
+      <span class="profile-text">Kartik</span>
+      <div class="dropdown-content">
+        <a href="profile.html">View Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="#" id="logout">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="learning-section">
+    <h2>Upskill Yourself with Job Cloud</h2>
+    <p>Enhance your knowledge, earn certifications, and prepare for your dream job.</p>
+
+    <div class="learning-grid">
+      <div class="course-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.2Qin3a11bgxOYjFH91Q7cwHaDt?pid=Api&P=0&h=180" alt="Web Dev">
+        <div class="course-content">
+          <h3>Full Stack Web Development</h3>
+          <p>Learn HTML, CSS, JS, and backend skills to build complete websites.</p>
+          <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/" target="_blank">Start Learning</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP._Lm_T3scKhVEVFC54gcRxwHaE8?pid=Api&P=0&h=180" alt="Java">
+        <div class="course-content">
+          <h3>Java Programming</h3>
+          <p>Master object-oriented programming with hands-on Java projects.</p>
+          <a href="https://youtu.be/BGTx91t8q50?si=OxPElvaP0v28I-Vc" target="_blank">Watch Free Course</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.kohz3VnCw7zvdI6Qybwq2gHaDt?pid=Api&P=0&h=180" alt="Data Analytics">
+        <div class="course-content">
+          <h3>Data Analytics</h3>
+          <p>Learn to analyze and visualize data using Excel, SQL, and Power BI.</p>
+          <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank">View Course</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.hysIqgvi9OcmPZohEFpeXgHaEK?pid=Api&P=0&h=180" alt="Finance Basics">
+        <div class="course-content">
+          <h3>Finance Essentials</h3>
+          <p>Understand financial statements, markets, and investment basics.</p>
+          <a href="https://www.coursera.org/learn/finance-for-non-finance" target="_blank">Enroll</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.G-_6THzs8rTf69p2UlxQOAHaHa?pid=Api&P=0&h=180" alt="Digital Marketing">
+        <div class="course-content">
+          <h3>Digital Marketing</h3>
+          <p>Grow online presence through SEO, SEM, and content strategy.</p>
+          <a href="https://www.udemy.com/course/digital-marketing-course/" target="_blank">Explore</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resources">
+      <h3>💡 Free Learning Resources</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/@freecodecamp" target="_blank">FreeCodeCamp - Web Dev Tutorials</a></li>
+        <li><a href="https://www.coursera.org" target="_blank">Coursera - Certified Career Courses</a></li>
+        <li><a href="https://www.khanacademy.org/" target="_blank">Khan Academy - Learn Anything</a></li>
+        <li><a href="https://grow.google/" target="_blank">Google Digital Garage - Free Certifications</a></li>
+      </ul>
+    </div>
+
+    <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg" title="HTML Crash Course" allowfullscreen></iframe>
+
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Job Cloud. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-contact">
+        <p>Contact us: <a href="mailto:contact@jobcloud.com">contact@jobcloud.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector(".profile-text").addEventListener("click", function() {
+      document.querySelector(".profile.dropdown").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>

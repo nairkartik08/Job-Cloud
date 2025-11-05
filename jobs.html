@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Jobs - Job Cloud</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .category-section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #fff6e5;
+    }
+    .category-section h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #1d624e;
+    }
+    .category-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .category-card {
+      background: white;
+      width: 270px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+    }
+    .category-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .category-card .content {
+      padding: 20px;
+    }
+    .category-card h3 {
+      color: #1d624e;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .category-card p {
+      font-size: 14px;
+      color: #555;
+      min-height: 40px;
+    }
+    .category-card a {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #1d624e;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .category-card a:hover {
+      background-color: #134436;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="jobcloud12.png" alt="Job Cloud Logo" />
+      <text>Job Cloud</text>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="jobs.html" class="active">Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="learning.html">Learning</a>
+    </div>
+
+    <div class="profile dropdown">
+      <i class="fa-solid fa-user" style="color: #1d624e"></i>
+      <span class="profile-text">Kartik</span>
+      <div class="dropdown-content">
+        <a href="profile.html">View Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="#" id="logout">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="category-section">
+    <h2>Explore Jobs by Category</h2>
+
+    <div class="category-grid">
+      
+      <div class="category-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.-szSb6FYheUXCJ9JiLAt6wHaFh?pid=Api&P=0&h=180" alt="Engineering Jobs">
+        <div class="content">
+          <h3>Engineering</h3>
+          <p>Build the future with opportunities in Mechanical, Civil, Electrical, and Robotics Engineering.</p>
+          <a href="engineering.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.20UZG_OJdxb6vdhuboZ1vgHaEK?pid=Api&P=0&h=180" alt="Finance Jobs">
+        <div class="content">
+          <h3>Finance</h3>
+          <p>Discover roles in Financial Analysis, Risk Management, and Investment Banking.</p>
+          <a href="finance.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="https://logos-world.net/wp-content/uploads/2022/11/PG-Symbol.png" alt="Marketing Jobs">
+        <div class="content">
+          <h3>Marketing</h3>
+          <p>Help brands grow and innovate with roles in Digital and Product Marketing.</p>
+          <a href="marketing.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.I8oa8fJhLHp2SAzMNTD_1wHaBY?pid=Api&P=0&h=180" alt="Accounting Jobs">
+        <div class="content">
+          <h3>Accounting</h3>
+          <p>Explore jobs in auditing, taxation, and financial management at top firms.</p>
+          <a href="accounting.html">View Jobs</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="IT Jobs">
+        <div class="content">
+          <h3>Information Technology</h3>
+          <p>Work on cutting-edge tech with roles in Software, Cloud, and Data Engineering.</p>
+          <a href="information-technology.html">View Jobs</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Job Cloud. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-contact">
+        <p>Contact us: <a href="mailto:contact@jobcloud.com">contact@jobcloud.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector(".profile-text").addEventListener("click", function() {
+      document.querySelector(".profile.dropdown").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>

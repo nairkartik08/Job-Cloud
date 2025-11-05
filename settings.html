@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - Job Cloud</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff6e5;
+      color: #333;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark-mode {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    .settings-container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark-mode .settings-container {
+      background: #2b2b2b;
+      color: #f0f0f0;
+    }
+
+    .settings-container h2 {
+      color: #1d624e;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .setting-item label {
+      font-weight: 500;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 26px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 25px;
+      transition: 0.4s;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #1d624e;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(24px);
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .save-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 25px;
+      background-color: #1d624e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .save-btn:hover {
+      background-color: #134436;
+    }
+
+    body.dark-mode nav {
+      background-color: rgba(30, 30, 30, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="jobcloud12.png" alt="Job Cloud Logo" />
+      <text>Job Cloud</text>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="learning.html">Learning</a>
+    </div>
+
+    <div class="profile dropdown">
+      <i class="fa-solid fa-user" style="color: #1d624e"></i>
+      <span class="profile-text">Kartik</span>
+      <div class="dropdown-content">
+        <a href="profile.html">View Profile</a>
+        <a href="settings.html" class="active">Settings</a>
+        <a href="#" id="logout">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="settings-container">
+    <h2>User Settings</h2>
+
+    <div class="setting-item">
+      <label for="darkMode">Dark Mode</label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="darkMode" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-item">
+      <label for="fontSize">Font Size</label>
+      <select id="fontSize">
+        <option value="16">Default</option>
+        <option value="18">Large</option>
+        <option value="20">Extra Large</option>
+      </select>
+    </div>
+
+    <div class="setting-item">
+      <label for="notifications">Email Notifications</label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="notifications" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-item">
+      <label for="language">Language</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="es">Spanish</option>
+      </select>
+    </div>
+
+    <button class="save-btn" id="saveBtn">Save Preferences</button>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Job Cloud. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const darkModeToggle = document.getElementById("darkMode");
+    const fontSizeSelect = document.getElementById("fontSize");
+    const notificationsToggle = document.getElementById("notifications");
+    const languageSelect = document.getElementById("language");
+
+    // Apply saved settings when page loads
+    window.addEventListener("DOMContentLoaded", () => {
+      const settings = JSON.parse(localStorage.getItem("userSettings")) || {};
+
+      if (settings.darkMode) {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.checked = true;
+      }
+
+      if (settings.fontSize) {
+        document.body.style.fontSize = settings.fontSize + "px";
+        fontSizeSelect.value = settings.fontSize;
+      }
+
+      if (settings.notifications) {
+        notificationsToggle.checked = true;
+      }
+
+      if (settings.language) {
+        languageSelect.value = settings.language;
+      }
+    });
+
+    // Instantly apply and save dark mode toggle
+    darkModeToggle.addEventListener("change", () => {
+      if (darkModeToggle.checked) {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+      saveSettings(false);
+    });
+
+    // Apply font size instantly
+    fontSizeSelect.addEventListener("change", () => {
+      document.body.style.fontSize = fontSizeSelect.value + "px";
+      saveSettings(false);
+    });
+
+    // Save all preferences
+    document.getElementById("saveBtn").addEventListener("click", () => saveSettings(true));
+
+    function saveSettings(showAlert = true) {
+      const settings = {
+        darkMode: darkModeToggle.checked,
+        fontSize: fontSizeSelect.value,
+        notifications: notificationsToggle.checked,
+        language: languageSelect.value,
+      };
+
+      localStorage.setItem("userSettings", JSON.stringify(settings));
+      if (showAlert) alert("✅ Preferences saved successfully!");
+    }
+
+    // Dropdown stays open
+    document.querySelector(".profile-text").addEventListener("click", function () {
+      document.querySelector(".profile.dropdown").classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

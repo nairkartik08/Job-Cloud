@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+   body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+  background: #8c8a74; /* Infosys blue */
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+nav strong {
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 15px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+nav img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 0 10px #ffffff80;
+}
+
+nav a {
+  margin-left: auto;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #cce6ff;
+}
+
+/* Company Header */
+.company-header {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+  border-radius: 12px;
+}
+
+.company-header img {
+  width: 140px;
+  margin-bottom: 10px;
+}
+.company-header h1 {
+  font-size: 32px;
+  color: #333;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Job Listings Section */
+.job-listings {
+  max-width: 950px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+/* Job Card */
+.job-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.job-left {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.job-left img {
+  width: 65px;
+  height: 65px;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-left: 10px;
+  
+}
+.job-info{
+  margin-left: 40px;
+}
+.job-info h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1d624e;
+}
+.job-info p {
+  margin: 5px 0 10px;
+  font-size: 15px;
+  color: #444;
+}
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.job-tags i {
+  margin-right: 5px;
+  color: #1d624e;
+}
+
+
+.job-description {
+  margin-top: 10px;
+}
+.job-description ul {
+  padding-left: 20px;
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+.job-description li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+
+.apply-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #1d624e;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative;
+  top:70px;
+}
+.apply-btn:hover {
+  background: #1d624e;
+  transform: scale(1.05);
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+
+  color: black;
+  font-size: 14px;
+}
+
+  </style>
+
+</head>
+<body>
+     <nav>
+    <img src="jobcloud12.png" alt="Job Cloud Logo" />
+    <strong>Job Cloud</strong>
+    <a href="index.html"> Back to Home</a>
+  </nav>
+
+  
+  <div class="company-header">
+    <img src="infosyslogo.png" alt="Infosys Logo" />
+    <h1>Job Openings at Infosys Bengaluru</h1>
+  </div>
+
+    <div class="job-card">
+      <div class="job-left">
+        <img src="infosyslogo.png" />
+        <div class="job-info">
+          <h3>Full Stack Developer</h3>
+          <p>Infosys • Bengaluru</p>
+          <div class="job-tags">
+            <span><i class="fa-solid fa-map-marker-alt"></i> Hybrid</span>
+            <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            <span><i class="fa-solid fa-briefcase"></i> 3+ Years Exp</span>
+          </div>
+           <div class="job-description">
+             <ul>
+               <li>Design, develop, and maintain robust, scalable web applications and platforms.</li>
+               <li>Collaborate with cross-functional teams to deliver end-to-end solutions that meet client needs.</li>
+               <li>Ensure code quality through rigorous reviews and unit testing.</li>
+                <li>Work with modern technologies like React, Angular, Node.js, and cloud services (AWS, Azure).</li>
+              </ul>
+           </div>
+         </div>
+      </div>
+      <button class="apply-btn" onclick="window.location.href='application.html?job=Full%20Stack%20Developer'">Apply</button>
+    </div>
+</body>
+</html>
