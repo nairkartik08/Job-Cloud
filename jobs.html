@@ -30,6 +30,7 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
+      padding-bottom: 20px;
     }
     .category-card:hover {
       transform: translateY(-8px);
@@ -147,7 +148,7 @@
     </div>
   </section>
 
-<!-- ✅ New Dynamic Jobs Section -->
+<!-- ✅ Recently Posted Jobs Section -->
 <section class="job-listings">
   <h2 style="text-align:center; color:#1d624e; margin-top:50px;">Recently Posted Jobs</h2>
   <div id="jobsContainer" class="category-grid" style="margin-top:30px;"></div>
@@ -171,54 +172,38 @@
     </div>
   </footer>
 
-  <script>
-    document.querySelector(".profile-text").addEventListener("click", function() {
-      document.querySelector(".profile.dropdown").classList.toggle("active");
-    });
-    
-  </script>
- <section class="job-listings">
-  <h2 style="text-align:center; color:#1d624e; margin-top:50px;">Recently Posted Jobs</h2>
-  <div id="jobsContainer" class="category-grid" style="margin-top:30px;"></div>
-</section>
-
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const container = document.getElementById("jobsContainer");
+  document.addEventListener("DOMContentLoaded", async () => {
+    const container = document.getElementById("jobsContainer");
 
-  try {
-    const res = await fetch("https://jobcloud-backend.onrender.com/jobs");
-    const jobs = await res.json();
+    try {
+      const res = await fetch("https://jobcloud-backend.onrender.com/jobs");
+      const jobs = await res.json();
 
-    if (!Array.isArray(jobs) || jobs.length === 0) {
-      container.innerHTML = "<p style='text-align:center; color:#555;'>No jobs have been posted yet.</p>";
-      return;
-    }
+      if (!Array.isArray(jobs) || jobs.length === 0) {
+        container.innerHTML = "<p style='text-align:center; color:#555;'>No jobs have been posted yet.</p>";
+        return;
+      }
 
-    container.innerHTML = jobs
-      .map(
-        (job) => `
+      container.innerHTML = jobs.map(job => `
         <div class="category-card">
           <div class="content">
-            <h3>${job.fullname || "Anonymous Recruiter"}</h3>
-            <p><b>Email:</b> ${job.email}</p>
-            <p><b>Phone:</b> ${job.phone || "N/A"}</p>
-            <p>${job.cover_letter || "No job description provided."}</p>
-            ${
-              job.resume_path
-                ? `<a href="https://jobcloud-backend.onrender.com/${job.resume_path}" target="_blank">View Resume</a>`
-                : ""
-            }
+            <h3>${job.title}</h3>
+            <p><b>Company:</b> ${job.company}</p>
+            <p><b>Location:</b> ${job.location}</p>
+            <p><b>Salary:</b> ${job.salary || 'Not specified'}</p>
+            <p><b>Skills:</b> ${job.skills || 'N/A'}</p>
+            <p style="font-size:13px; color:#666;">${job.description || 'No description available'}</p>
+            <a href="apply.html" onclick="localStorage.setItem('selectedJob', '${job.title}')">Apply Now</a>
           </div>
         </div>
-      `
-      )
-      .join("");
-  } catch (err) {
-    console.error("❌ Error fetching jobs:", err);
-    container.innerHTML = "<p style='text-align:center; color:red;'>Server error. Please try again later.</p>";
-  }
-});
+      `).join("");
+
+    } catch (err) {
+      console.error("❌ Error fetching jobs:", err);
+      container.innerHTML = "<p style='text-align:center; color:red;'>Server error. Please try again later.</p>";
+    }
+  });
 </script>
 
 </body>
