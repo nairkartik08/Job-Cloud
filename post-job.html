@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job - Job Cloud</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1d624e;
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1d624e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #15503f;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Post a New Job</h2>
+    <form id="jobForm">
+      <input type="text" name="title" placeholder="Job Title" required />
+      <input type="text" name="company" placeholder="Company Name" required />
+      <input type="text" name="location" placeholder="Location (e.g., Mumbai)" required />
+      <input type="text" name="salary" placeholder="Salary Range (Optional)" />
+      <input type="text" name="experience" placeholder="Experience Required (in years)" />
+      <input type="text" name="skills" placeholder="Key Skills (comma separated)" />
+      <textarea name="description" placeholder="Job Description..." required></textarea>
+      <button type="submit">Post Job</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    document.getElementById("jobForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const jobData = Object.fromEntries(new FormData(this).entries());
+      const messageBox = document.getElementById("message");
+      messageBox.textContent = "⏳ Posting job...";
+
+      try {
+        const res = await fetch("https://jobcloud-backend.onrender.com/add-job", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(jobData)
+        });
+
+        const data = await res.text();
+        if (res.ok) {
+          messageBox.textContent = "✅ " + data;
+          messageBox.style.color = "green";
+          this.reset();
+        } else {
+          messageBox.textContent = "❌ " + data;
+          messageBox.style.color = "red";
+        }
+      } catch (error) {
+        messageBox.textContent = "❌ Failed to connect to server.";
+        messageBox.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
