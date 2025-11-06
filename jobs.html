@@ -147,6 +147,12 @@
     </div>
   </section>
 
+<!-- ✅ New Dynamic Jobs Section -->
+<section class="job-listings">
+  <h2 style="text-align:center; color:#1d624e; margin-top:50px;">Recently Posted Jobs</h2>
+  <div id="jobsContainer" class="category-grid" style="margin-top:30px;"></div>
+</section>
+
   <footer>
     <div class="footer-content">
       <p>&copy; 2024 Job Cloud. All rights reserved.</p>
@@ -169,7 +175,51 @@
     document.querySelector(".profile-text").addEventListener("click", function() {
       document.querySelector(".profile.dropdown").classList.toggle("active");
     });
+    
   </script>
+ <section class="job-listings">
+  <h2 style="text-align:center; color:#1d624e; margin-top:50px;">Recently Posted Jobs</h2>
+  <div id="jobsContainer" class="category-grid" style="margin-top:30px;"></div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.getElementById("jobsContainer");
+
+  try {
+    const res = await fetch("https://jobcloud-backend.onrender.com/jobs");
+    const jobs = await res.json();
+
+    if (!Array.isArray(jobs) || jobs.length === 0) {
+      container.innerHTML = "<p style='text-align:center; color:#555;'>No jobs have been posted yet.</p>";
+      return;
+    }
+
+    container.innerHTML = jobs
+      .map(
+        (job) => `
+        <div class="category-card">
+          <div class="content">
+            <h3>${job.fullname || "Anonymous Recruiter"}</h3>
+            <p><b>Email:</b> ${job.email}</p>
+            <p><b>Phone:</b> ${job.phone || "N/A"}</p>
+            <p>${job.cover_letter || "No job description provided."}</p>
+            ${
+              job.resume_path
+                ? `<a href="https://jobcloud-backend.onrender.com/${job.resume_path}" target="_blank">View Resume</a>`
+                : ""
+            }
+          </div>
+        </div>
+      `
+      )
+      .join("");
+  } catch (err) {
+    console.error("❌ Error fetching jobs:", err);
+    container.innerHTML = "<p style='text-align:center; color:red;'>Server error. Please try again later.</p>";
+  }
+});
+</script>
 
 </body>
 </html>
