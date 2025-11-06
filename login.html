@@ -78,6 +78,8 @@
   </div>
 
   <script>
+    const backendURL = "https://jobcloud-backend.onrender.com";
+
     document.getElementById("loginForm").addEventListener("submit", async function(e) {
       e.preventDefault();
       
@@ -86,7 +88,7 @@
       const messageBox = document.getElementById("loginMessage");
 
       try {
-        const res = await fetch("https://jobcloud-backend.onrender.com/login", {
+        const res = await fetch(`${backendURL}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
@@ -95,11 +97,17 @@
         const data = await res.json();
 
         if (res.ok && data.success) {
-          // ✅ Store full user object in localStorage
+          // ✅ Save full user details for auto-fill later
           localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+          localStorage.setItem("userEmail", data.user.email);
+          localStorage.setItem("userName", data.user.fullname);
 
-          // ✅ Redirect to home page
-          window.location.href = "index.html";
+          messageBox.style.color = "green";
+          messageBox.textContent = "✅ Login successful! Redirecting...";
+
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1200);
         } else {
           messageBox.textContent = "❌ Invalid email or password!";
         }

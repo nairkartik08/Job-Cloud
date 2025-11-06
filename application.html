@@ -106,26 +106,18 @@
       const jobTitle = localStorage.getItem("selectedJob") || "Job";
       document.getElementById("jobTitle").textContent = jobTitle;
 
-      // Get logged-in user email
-      const email = localStorage.getItem("userEmail");
-      if (!email) {
+      // ✅ Get logged-in user from localStorage
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (!loggedInUser || !loggedInUser.email) {
         alert("Please log in to apply for a job.");
         window.location.href = "login.html";
         return;
       }
 
-      // ✅ Fetch and auto-fill user profile
-      try {
-        const res = await fetch(`${backendURL}/user/${email}`);
-        if (!res.ok) throw new Error("User not found");
-
-        const data = await res.json();
-        document.getElementById("name").value = data.fullname || "";
-        document.getElementById("email").value = data.email || "";
-        document.getElementById("phone").value = data.mobile || "";
-      } catch (err) {
-        console.error("❌ Error fetching user profile:", err);
-      }
+      // ✅ Auto-fill user info
+      document.getElementById("name").value = loggedInUser.fullname || "";
+      document.getElementById("email").value = loggedInUser.email || "";
+      document.getElementById("phone").value = loggedInUser.mobile || "";
     });
 
     // ✅ Handle form submission
