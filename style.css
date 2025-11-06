@@ -67,6 +67,23 @@ nav text {
   transform: translateY(-2px);
 }
 
+/* === POST JOB BUTTON === */
+.nav-links .post-job {
+  background-color: #1E90FF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links .post-job:hover {
+  background-color: #1558b3;
+  transform: scale(1.05);
+}
+
+
 .profile.dropdown {
   position: relative;
   display: inline-block;
