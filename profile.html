@@ -6,7 +6,7 @@
   <title>My Profile - Job Cloud</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       background: #f3f4f6;
       margin: 0;
       padding: 0;
@@ -23,11 +23,14 @@
     h2 {
       text-align: center;
       color: #2575fc;
+      margin-bottom: 20px;
     }
     .field {
       margin: 10px 0;
       padding: 10px;
       border-bottom: 1px solid #ddd;
+      font-size: 15px;
+      line-height: 1.6;
     }
     .field span {
       font-weight: bold;
@@ -36,41 +39,56 @@
     .resume-link {
       color: #2575fc;
       text-decoration: none;
+      font-weight: 500;
+    }
+    .resume-link:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="profile-container">
     <h2>My Profile</h2>
-    <div id="profileData"></div>
+    <div id="profileData">Loading profile...</div>
   </div>
 
   <script>
-    const email = localStorage.getItem("userEmail");
-    if (!email) {
-      window.location.href = "login.html";
-    }
+    document.addEventListener("DOMContentLoaded", async () => {
+      const user = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (!user || !user.email) {
+        alert("You are not logged in!");
+        window.location.href = "login.html";
+        return;
+      }
 
-    async function fetchProfile() {
-      const res = await fetch(`https://jobcloud-backend.onrender.com/user/${email}`);
-      const data = await res.json();
+      try {
+        const res = await fetch(`https://jobcloud-backend.onrender.com/user/${user.email}`);
+        if (!res.ok) throw new Error("Failed to fetch user data");
 
-      const container = document.getElementById("profileData");
-      container.innerHTML = `
-        <div class="field"><span>Full Name:</span> ${data.fullname}</div>
-        <div class="field"><span>Email:</span> ${data.email}</div>
-        <div class="field"><span>Mobile:</span> ${data.mobile}</div>
-        <div class="field"><span>DOB:</span> ${data.dob}</div>
-        <div class="field"><span>Gender:</span> ${data.gender}</div>
-        <div class="field"><span>Address:</span> ${data.address}, ${data.city}, ${data.state}</div>
-        <div class="field"><span>Education:</span> ${data.education}</div>
-        <div class="field"><span>Experience:</span> ${data.experience} years</div>
-        <div class="field"><span>Skills:</span> ${data.skills}</div>
-        <div class="field"><span>Resume:</span> <a href="http://localhost:5000/uploads/${data.resume}" class="resume-link" target="_blank">View Resume</a></div>
-      `;
-    }
+        const data = await res.json();
+        const container = document.getElementById("profileData");
 
-    fetchProfile();
+        container.innerHTML = `
+          <div class="field"><span>Full Name:</span> ${data.fullname || "N/A"}</div>
+          <div class="field"><span>Email:</span> ${data.email || "N/A"}</div>
+          <div class="field"><span>Mobile:</span> ${data.mobile || "N/A"}</div>
+          <div class="field"><span>Date of Birth:</span> ${data.dob || "N/A"}</div>
+          <div class="field"><span>Gender:</span> ${data.gender || "N/A"}</div>
+          <div class="field"><span>Address:</span> ${(data.address || "N/A") + ", " + (data.city || "") + ", " + (data.state || "")}</div>
+          <div class="field"><span>Education:</span> ${data.education || "N/A"}</div>
+          <div class="field"><span>Experience:</span> ${data.experience || "0"} years</div>
+          <div class="field"><span>Skills:</span> ${data.skills || "N/A"}</div>
+          <div class="field"><span>Resume:</span> ${
+            data.resume
+              ? `<a href="https://jobcloud-backend.onrender.com/uploads/${data.resume}" class="resume-link" target="_blank">View Resume</a>`
+              : "Not Uploaded"
+          }</div>
+        `;
+      } catch (error) {
+        console.error("❌ Error fetching profile:", error);
+        document.getElementById("profileData").innerHTML = "<p>❌ Failed to load profile data.</p>";
+      }
+    });
   </script>
 </body>
 </html>
