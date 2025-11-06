@@ -81,11 +81,6 @@
           <div class="field"><span>Education:</span> ${data.education || "N/A"}</div>
           <div class="field"><span>Experience:</span> ${data.experience || "0"} years</div>
           <div class="field"><span>Skills:</span> ${data.skills || "N/A"}</div>
-          <div class="field"><span>Resume:</span> ${
-            data.resume
-              ? `<a href="https://jobcloud-backend.onrender.com/uploads/${data.resume}" class="resume-link" target="_blank">View Resume</a>`
-              : "Not Uploaded"
-          }</div>
         `;
       } catch (error) {
         console.error("❌ Error fetching profile:", error);
