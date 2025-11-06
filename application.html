@@ -64,6 +64,11 @@
     button:hover {
       background: #134436;
     }
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -90,8 +95,69 @@
 
       <button type="submit">Submit Application</button>
     </form>
+    <p id="message"></p>
   </div>
 
-  <script src="apply.js"></script>
+  <script>
+    const backendURL = "https://jobcloud-backend.onrender.com";
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Show selected job title
+      const jobTitle = localStorage.getItem("selectedJob") || "Job";
+      document.getElementById("jobTitle").textContent = jobTitle;
+
+      // Get logged-in user email
+      const email = localStorage.getItem("userEmail");
+      if (!email) {
+        alert("Please log in to apply for a job.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      // ✅ Fetch and auto-fill user profile
+      try {
+        const res = await fetch(`${backendURL}/user/${email}`);
+        if (!res.ok) throw new Error("User not found");
+
+        const data = await res.json();
+        document.getElementById("name").value = data.fullname || "";
+        document.getElementById("email").value = data.email || "";
+        document.getElementById("phone").value = data.mobile || "";
+      } catch (err) {
+        console.error("❌ Error fetching user profile:", err);
+      }
+    });
+
+    // ✅ Handle form submission
+    document.getElementById("applicationForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const messageBox = document.getElementById("message");
+      messageBox.textContent = "";
+
+      try {
+        const res = await fetch(`${backendURL}/submit-application`, {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await res.text();
+        if (res.ok) {
+          messageBox.style.color = "green";
+          messageBox.textContent = "✅ Application submitted successfully!";
+          e.target.reset();
+        } else {
+          messageBox.style.color = "red";
+          messageBox.textContent = "❌ " + result;
+        }
+      } catch (error) {
+        console.error("❌ Submission failed:", error);
+        messageBox.style.color = "red";
+        messageBox.textContent = "❌ Failed to connect to server.";
+      }
+    });
+  </script>
+
 </body>
 </html>
