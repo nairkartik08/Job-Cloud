@@ -12,7 +12,7 @@ document.getElementById("applicationForm").addEventListener("submit", async func
   const formData = new FormData(form);
 
   try {
-    const response = await fetch('http://localhost:5000/submit-application', {
+    const response = await fetch('https://jobcloud-backend.onrender.com/submit-application', {
       method: 'POST',
       body: formData
     });
