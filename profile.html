@@ -72,7 +72,10 @@
           <div class="field"><span>Full Name:</span> ${data.fullname || "N/A"}</div>
           <div class="field"><span>Email:</span> ${data.email || "N/A"}</div>
           <div class="field"><span>Mobile:</span> ${data.mobile || "N/A"}</div>
-          <div class="field"><span>Date of Birth:</span> ${data.dob || "N/A"}</div>
+          <div class="field">
+  <span>Date of Birth:</span> ${data.dob ? new Date(data.dob).toLocaleDateString("en-GB") : "N/A"}
+</div>
+
           <div class="field"><span>Gender:</span> ${data.gender || "N/A"}</div>
           <div class="field"><span>Address:</span> ${(data.address || "N/A") + ", " + (data.city || "") + ", " + (data.state || "")}</div>
           <div class="field"><span>Education:</span> ${data.education || "N/A"}</div>
