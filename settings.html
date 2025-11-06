@@ -269,5 +269,28 @@
       document.querySelector(".profile.dropdown").classList.toggle("active");
     });
   </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    const userNameSpan = document.getElementById("navUserName");
+
+    if (user && user.fullname) {
+      userNameSpan.textContent = user.fullname;
+    } else {
+      userNameSpan.textContent = "Profile";
+    }
+
+    // Optional: redirect to login if no user logged in
+    const logoutBtn = document.getElementById("logout");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+    }
+  });
+</script>
+
+
 </body>
 </html>
