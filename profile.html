@@ -52,7 +52,7 @@
     }
 
     async function fetchProfile() {
-      const res = await fetch(`http://localhost:5000/user/${email}`);
+      const res = await fetch(`https://jobcloud-backend.onrender.com/user/${email}`);
       const data = await res.json();
 
       const container = document.getElementById("profileData");

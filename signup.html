@@ -130,50 +130,61 @@
   </div>
 
   <script>
-    const form = document.getElementById("signupForm");
-    const loader = document.getElementById("loader");
-    const messageBox = document.getElementById("message");
+  const form = document.getElementById("signupForm");
+  const loader = document.getElementById("loader");
+  const messageBox = document.getElementById("message");
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      const formData = new FormData(this);
-      loader.style.display = "block";
-      messageBox.textContent = "";
+    const formData = new FormData(this);
+    loader.style.display = "block";
+    messageBox.textContent = "";
 
-      try {
-        const res = await fetch("https://jobcloud-backend.onrender.com/signup", {
-          method: "POST",
-          body: formData
-        });
+    try {
+      // ✅ Send signup request to Render backend
+      const res = await fetch("https://jobcloud-backend.onrender.com/signup", {
+        method: "POST",
+        body: formData,
+      });
 
-        loader.style.display = "none";
-        const data = await res.text();
+      loader.style.display = "none";
+      const responseText = await res.text();
 
-        if (res.ok) {
-  // Save user info locally
-  const fullname = document.getElementById("fullname").value;
-  const email = document.getElementById("email").value;
-  localStorage.setItem("userName", fullname);
-  localStorage.setItem("userEmail", email);
+      if (res.ok) {
+        // ✅ Save user data locally for session persistence
+        const fullname = formData.get("fullname");
+        const email = formData.get("email");
 
-  messageBox.textContent = "✅ Signup successful! Redirecting...";
-  setTimeout(() => {
-  const indexPath = location.href.replace("signup.html", "index.html");
-  window.location.href = indexPath;
-}, 1500);
+        localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify({
+            fullname: fullname,
+            email: email,
+          })
+        );
 
-        } else {
-          messageBox.textContent = data;
-          messageBox.classList.add("error");
-        }
-      } catch (error) {
-        loader.style.display = "none";
-        messageBox.textContent = "❌ Failed to connect to server";
+        messageBox.textContent = "✅ Signup successful! Redirecting...";
+        messageBox.classList.remove("error");
+        messageBox.classList.add("success");
+
+        // ✅ Redirect directly to home page after 1.5 seconds
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      } else {
+        messageBox.textContent = responseText || "❌ Error during signup!";
         messageBox.classList.add("error");
       }
-    });
-  </script>
+    } catch (error) {
+      loader.style.display = "none";
+      messageBox.textContent = "❌ Failed to connect to server";
+      messageBox.classList.add("error");
+      console.error("Signup error:", error);
+    }
+  });
+</script>
+
 </body>
 </html>
 
