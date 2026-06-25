@@ -1,174 +1,292 @@
-💼 Job Cloud – Full Stack Job Portal
-🌐 Live Demo
+# 💼 Job Cloud
 
-Frontend (GitHub Pages): https://nairkartik08.github.io/Job-Cloud/
+<div align="center">
 
-Backend (Render): https://jobcloud-backend.onrender.com
+### Cloud-Based Job Portal for Job Seekers & Recruiters
 
-🧾 Overview
+A full-stack job portal that enables users to register, manage profiles, post jobs, and apply for opportunities through a responsive web application.
 
-Job Cloud is a cloud-based job portal designed to connect job seekers and employers.
-It allows users to sign up, log in, post jobs, apply for jobs, and manage their profiles — all through a seamless and modern web interface.
+## 🌐 Live Demo
 
-The project demonstrates a complete Full Stack Web Application setup using:
+🔗 **Frontend:** https://nairkartik08.github.io/Job-Cloud/
 
-Frontend: HTML, CSS, JavaScript
+⚙️ **Backend API:** https://jobcloud-backend.onrender.com
 
-Backend: Node.js with Express.js
+![HTML](https://img.shields.io/badge/HTML-5-orange)
+![CSS](https://img.shields.io/badge/CSS-3-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green)
+![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
+![Render](https://img.shields.io/badge/Hosted%20on-Render-purple)
+![GitHub Pages](https://img.shields.io/badge/Frontend-GitHub%20Pages-black)
 
-Database: MySQL (hosted on Clever Cloud)
+</div>
 
-Hosting:
+---
 
-Frontend → GitHub Pages
+# 📖 About
 
-Backend → Render
+Job Cloud is a cloud-hosted job portal developed as a Full Stack Java project. It provides a platform where job seekers can create profiles, upload resumes, browse jobs, and apply instantly, while recruiters can post and manage job listings.
 
-🚀 Features
-👨‍💼 For Job Seekers:
+The project demonstrates frontend-backend integration using REST APIs with a cloud-hosted MySQL database.
 
-User registration and login
+---
 
-Cloud-hosted user profiles
+# ✨ Features
 
-Autofilled job application form using profile data
+## 👤 Job Seekers
 
-Resume upload and management
+* User Registration & Login
+* Create and manage profile
+* Resume upload
+* Auto-filled application form
+* Browse available jobs
+* Apply directly to job postings
 
-Apply directly for available job posts
+## 🏢 Employers
 
-🏢 For Employers:
+* Post new job openings
+* View all job listings
+* Manage recruitment data
 
-Post new jobs with role, description, and requirements
+## ⚙️ System
 
-View all posted jobs
+* REST API Architecture
+* Cloud MySQL Database
+* Responsive UI
+* LocalStorage Session Management
+* Resume Upload Support
+* Cross-Origin Communication
 
-Manage job listings through database
+---
 
-⚙️ System Features:
+# 🛠 Tech Stack
 
-Secure cloud database connection (Clever Cloud MySQL)
+| Technology   | Used                  |
+| ------------ | --------------------- |
+| HTML5        | ✅                     |
+| CSS3         | ✅                     |
+| JavaScript   | ✅                     |
+| Node.js      | ✅                     |
+| Express.js   | ✅                     |
+| MySQL        | ✅                     |
+| Multer       | Resume Upload         |
+| dotenv       | Environment Variables |
+| CORS         | API Communication     |
+| GitHub Pages | Frontend Hosting      |
+| Render       | Backend Hosting       |
+| Clever Cloud | Database Hosting      |
 
-Real-time data fetching via RESTful APIs
+---
 
-LocalStorage-based session handling
+# 📂 Project Structure
 
-Responsive design and easy navigation
+```
+Job-Cloud
+│
+├── frontend
+│   ├── index.html
+│   ├── login.html
+│   ├── signup.html
+│   ├── profile.html
+│   ├── jobs.html
+│   ├── css/
+│   ├── js/
+│   └── assets/
+│
+├── backend
+│   ├── server.js
+│   ├── routes/
+│   ├── uploads/
+│   ├── db.js
+│   └── package.json
+│
+└── README.md
+```
 
-🧠 Tech Stack
-Layer	Technology
-Frontend	HTML, CSS, JavaScript
-Backend	Node.js, Express.js
-Database	MySQL (Clever Cloud)
-Deployment	Render (Backend), GitHub Pages (Frontend)
-File Handling	Multer (for resume uploads)
-Cross-Origin Handling	CORS
-Environment Variables	dotenv
+---
 
-📡 API Endpoints
-Function	Method	Endpoint
-Signup	POST	/signup
-Login	POST	/login
-Get User Profile	GET	/user/:email
-Submit Application	POST	/submit-application
-Get All Jobs	GET	/jobs
-Post a Job	POST	/add-job
+# 🚀 Application Workflow
 
-🧩 Database Schema
-users
-Column	Type	Description
-id	INT	Primary Key
-fullname	VARCHAR(100)	User’s full name
-email	VARCHAR(100)	Unique user email
-password	VARCHAR(255)	User password
-mobile	VARCHAR(15)	Phone number
-gender	VARCHAR(10)	Gender
-dob	DATE	Date of Birth
-education	VARCHAR(150)	Qualification
-skills	VARCHAR(255)	Skills
-resume	VARCHAR(255)	Uploaded resume filename
-jobs
-Column	Type	Description
-id	INT	Primary Key
-title	VARCHAR(100)	Job title
-company	VARCHAR(100)	Company name
-location	VARCHAR(100)	Job location
-description	TEXT	Job description
-salary	VARCHAR(50)	Salary offered
-experience	VARCHAR(50)	Required experience
-skills	VARCHAR(255)	Required skills
-posted_at	TIMESTAMP	Auto timestamp
-applications
-Column	Type	Description
-id	INT	Primary Key
-fullname	VARCHAR(100)	Applicant’s name
-email	VARCHAR(100)	Applicant’s email
-phone	VARCHAR(15)	Contact number
-cover_letter	TEXT	Cover letter content
-resume_path	VARCHAR(255)	Uploaded resume path
-submitted_at	TIMESTAMP	Application timestamp
+```text
+User Registration
+        │
+        ▼
+Login Authentication
+        │
+        ▼
+User Dashboard
+        │
+ ┌──────┴────────┐
+ │               │
+ ▼               ▼
+Browse Jobs    Post Jobs
+ │               │
+ ▼               ▼
+Apply Job    Stored in MySQL
+ │
+ ▼
+Application Submitted
+```
 
-🧭 Project Workflow
+---
 
-User Signup → Details stored in users table.
+# 📡 REST API
 
-Login → Email & password verified via backend.
+| Method | Endpoint            | Description   |
+| ------ | ------------------- | ------------- |
+| POST   | /signup             | Register User |
+| POST   | /login              | User Login    |
+| GET    | /user/:email        | Fetch Profile |
+| GET    | /jobs               | View Jobs     |
+| POST   | /add-job            | Post Job      |
+| POST   | /submit-application | Apply Job     |
 
-Profile Auto-Fill → Application form prefilled using stored user data.
+---
 
-Post Job → Employers add job listings via /add-job route.
+# 🗄 Database
 
-Apply for Job → Applications stored in applications table.
+### users
 
-Database Hosted on Cloud (Clever Cloud) → Persistent and online storage.
+* id
+* fullname
+* email
+* password
+* mobile
+* gender
+* dob
+* education
+* skills
+* resume
 
-🔒 Authentication
+### jobs
 
-The project uses custom authentication via email & password verification from the MySQL database.
-After login, user session is managed using localStorage on the frontend.
+* id
+* title
+* company
+* location
+* description
+* salary
+* experience
+* skills
+* posted_at
 
-🧰 Setup Instructions
-1️⃣ Clone the Repository
+### applications
+
+* id
+* fullname
+* email
+* phone
+* cover_letter
+* resume_path
+* submitted_at
+
+---
+
+# 🌐 Deployment
+
+| Service      | Purpose          |
+| ------------ | ---------------- |
+| GitHub Pages | Frontend Hosting |
+| Render       | Backend Hosting  |
+| Clever Cloud | MySQL Database   |
+
+---
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
 git clone https://github.com/nairkartik08/Job-Cloud.git
+
 cd Job-Cloud
+```
 
-2️⃣ Install Backend Dependencies
+## Install Backend
+
+```bash
 cd JCB-backend
+
 npm install
+```
 
-3️⃣ Create .env File
-DB_HOST=your-hostname
-DB_USER=your-username
-DB_PASSWORD=your-password
-DB_NAME=your-dbname
+## Create .env
+
+```env
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
 DB_PORT=3306
+```
 
-4️⃣ Run the Server
+## Run
+
+```bash
 node server.js
+```
 
-5️⃣ Open Frontend
+Open the frontend using Live Server or GitHub Pages.
 
-Open index.html using Live Server or GitHub Pages.
+---
 
-🌩️ Cloud Integrations
-Service	Purpose
-Clever Cloud	Cloud MySQL database hosting
-Render	Backend hosting for Node.js APIs
-GitHub Pages	Static frontend hosting
-📸 Screenshots (Optional for README)
+# 📸 Screenshots
 
-Signup & Login
+## 🏠 Home Page
 
-Profile Page
+| Landing Page | Categories |
+|--------------|------------|
+| ![](README-assets/home1.png) | ![](README-assets/home2.png) |
 
-Job Posting Interface
+---
 
-Application Form
+## 💼 Browse Jobs
 
-Job Listings
+| Job Listings | Job Details |
+|--------------|-------------|
+| ![](README-assets/jobs.png) | ![](README-assets/jobs2.png) |
 
-🧾 License
+---
 
-This project is for educational purposes under the guidance of the Full Stack Java course (FSJ) module.
-Free to use and modify with attribution.
+## 📚 Learning Portal
 
+![](README-assets/learning.png)
+
+---
+
+## ➕ Post a Job
+
+![](README-assets/post-job.png)
+
+---
+
+# 🔮 Future Improvements
+
+* JWT Authentication
+* Password Encryption (bcrypt)
+* Admin Dashboard
+* Email Notifications
+* Search & Filters
+* Pagination
+* Saved Jobs
+* Company Profiles
+* Docker Deployment
+
+---
+
+# 👨‍💻 Author
+
+**Kartik Nair**
+
+Mumbai University
+
+Full Stack Java Developer
+
+GitHub: https://github.com/nairkartik08
+
+---
+
+# ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐ on GitHub.
